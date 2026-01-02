@@ -22,7 +22,8 @@ h1 {
 
 form {
   display: flex;
-  gap: 6px;
+  flex-wrap: wrap;
+  gap: 8px;
   margin-bottom: 20px;
 }
 
