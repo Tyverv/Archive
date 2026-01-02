@@ -52,7 +52,15 @@ These constraints are expected to be addressed in future versions.
 - Initial release  
 - Basic item indexing  
 - Local persistence via client storage  
-- Minimal interface  
+- Minimal interface
+
+**v0.1.1**
+
+- Fixed form layout overflow on smaller screens
+- Improved input wrapping and spacing
+- Cleaned up item rendering logic
+- Prevented empty or invalid entries
+- Minor internal stability improvements
 
 ---
 
