@@ -27,9 +27,6 @@ archive/
 ├── style.css
 └── app.js
 
-yaml
-Copy code
-
 No setup required.
 
 ---
