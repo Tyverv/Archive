@@ -1,5 +1,3 @@
-Here’s a clean, utilitarian README description that fits a v0.1.0 GitHub repo and looks legit on first glance—no fluff, no lore.
-
 ⸻
 
 Archive
