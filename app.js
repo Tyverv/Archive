@@ -9,9 +9,14 @@ function save() {
 
 function render() {
   list.innerHTML = "";
+
   items.forEach(item => {
     const li = document.createElement("li");
-    li.textContent = `${item.name} — ${item.category || "uncategorized"} @ ${item.location || "unknown"}`;
+
+    const category = item.category || "uncategorized";
+    const location = item.location || "unknown";
+
+    li.textContent = `${item.name} — ${category} @ ${location}`;
     list.appendChild(li);
   });
 }
@@ -19,13 +24,13 @@ function render() {
 form.addEventListener("submit", e => {
   e.preventDefault();
 
-  const item = {
-    name: document.getElementById("name").value,
-    category: document.getElementById("category").value,
-    location: document.getElementById("location").value
-  };
+  const name = document.getElementById("name").value.trim();
+  const category = document.getElementById("category").value.trim();
+  const location = document.getElementById("location").value.trim();
 
-  items.push(item);
+  if (!name) return;
+
+  items.push({ name, category, location });
   save();
   render();
   form.reset();
