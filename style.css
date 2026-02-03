@@ -28,7 +28,7 @@ form {
 }
 
 input {
-flex: 1 1 140px;
+  flex: 1 1 140px;
   padding: 6px;
 }
 
@@ -36,6 +36,30 @@ button {
   padding: 6px 12px;
   cursor: pointer;
   flex: 0 0 auto;
+}
+
+button.secondary {
+  background: #eef1f6;
+  border: 1px solid #c6ccd7;
+}
+
+button.danger {
+  background: #ffeceb;
+  border: 1px solid #f3a8a2;
+  color: #8c1b13;
+}
+
+button:hover {
+  filter: brightness(0.97);
+}
+
+.toolbar {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.toolbar input {
+  width: 100%;
 }
 
 ul {
@@ -47,4 +71,18 @@ li {
   padding: 6px 4px;
   border-bottom: 1px solid #ddd;
   font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+li.empty {
+  color: #666;
+  font-style: italic;
+}
+
+.item-actions {
+  display: flex;
+  gap: 6px;
 }
