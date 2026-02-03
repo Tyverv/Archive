@@ -11,6 +11,8 @@ The application runs entirely client-side and requires no build step, backend, o
 ## Features
 
 - Add items with name, category, and location  
+- Edit or delete existing items  
+- Search across saved items  
 - Persistent storage using browser `localStorage`  
 - Clean, minimal UI  
 - Zero dependencies  
@@ -35,9 +37,8 @@ No setup required.
 
 This initial release intentionally keeps functionality minimal:
 
-- No editing or deletion of items  
 - Duplicate entries allowed  
-- No sorting, filtering, or search  
+- No sorting or advanced filtering  
 - Basic input validation only  
 - Flat data model  
 
@@ -61,6 +62,12 @@ These constraints are expected to be addressed in future versions.
 - Cleaned up item rendering logic
 - Prevented empty or invalid entries
 - Minor internal stability improvements
+
+**v0.2.0**
+
+- Added item editing and deletion controls
+- Added search filtering for stored items
+- Displayed an empty state when no items match
 
 ---
 
