@@ -56,10 +56,18 @@ button:hover {
 .toolbar {
   display: flex;
   margin-bottom: 16px;
+  align-items: center;
+  gap: 8px;
 }
 
 .toolbar input {
   width: 100%;
+}
+
+.item-count {
+  font-size: 12px;
+  color: #666;
+  white-space: nowrap;
 }
 
 ul {
