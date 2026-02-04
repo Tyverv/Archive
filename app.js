@@ -1,6 +1,7 @@
 const form = document.getElementById("item-form");
 const list = document.getElementById("item-list");
 const searchInput = document.getElementById("search");
+const itemCount = document.getElementById("item-count");
 
 const nameInput = document.getElementById("name");
 const categoryInput = document.getElementById("category");
@@ -39,6 +40,8 @@ function render() {
       .some(value => value.toLowerCase().includes(query));
   });
 
+  itemCount.textContent = `Showing ${filteredItems.length} of ${items.length}`;
+
   filteredItems.forEach(item => {
     const li = document.createElement("li");
     const details = document.createElement("div");
@@ -57,9 +60,9 @@ function render() {
     editButton.className = "secondary";
     editButton.addEventListener("click", () => {
       editingId = item.id;
-      nameInput.value = item.name;
-      categoryInput.value = item.category;
-      locationInput.value = item.location;
+      nameInput.value = item.name ?? "";
+      categoryInput.value = item.category ?? "";
+      locationInput.value = item.location ?? "";
       submitButton.textContent = "Update";
       nameInput.focus();
     });
