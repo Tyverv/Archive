@@ -69,6 +69,12 @@ These constraints are expected to be addressed in future versions.
 - Added search filtering for stored items
 - Displayed an empty state when no items match
 
+**v0.2.1**
+
+- Edited form defaults to fix undefined error
+- Added a feature that shows how many items match the current search filter out of all items
+- Polished the alignment of the search bar
+
 ---
 
 ## License
