@@ -13,6 +13,9 @@ The application runs entirely client-side and requires no build step, backend, o
 - Add items with name, category, and location  
 - Edit or delete existing items  
 - Search across saved items  
+- Sort items by time, name, category, or location  
+- Filter to uncategorized and/or unknown-location items  
+- Export and import items via JSON backup  
 - Persistent storage using browser `localStorage`  
 - Clean, minimal UI  
 - Zero dependencies  
@@ -37,9 +40,6 @@ No setup required.
 
 This initial release intentionally keeps functionality minimal:
 
-- Duplicate entries allowed  
-- No sorting or advanced filtering  
-- Basic input validation only  
 - Flat data model  
 
 These constraints are expected to be addressed in future versions.
@@ -74,6 +74,14 @@ These constraints are expected to be addressed in future versions.
 - Edited form defaults to fix undefined error
 - Added a feature that shows how many items match the current search filter out of all items
 - Polished the alignment of the search bar
+
+**v0.3.0**
+
+- Added sort controls (date, name, category, location)
+- Added advanced filters for uncategorized and unknown-location entries
+- Added duplicate-entry warning (non-blocking)
+- Added JSON export/import for local backup and restore
+- Improved input normalization and validation
 
 ---
 
