@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Archive</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <h1>Archive</h1>
+
+    <form id="item-form">
+      <input id="name" placeholder="Item name" required minlength="2" maxlength="80" />
+      <input id="category" placeholder="Category" maxlength="50" />
+      <input id="location" placeholder="Location" maxlength="50" />
+      <button type="submit">Add</button>
+    </form>
+
+    <p id="form-feedback" class="feedback" role="status" aria-live="polite"></p>
+
+    <div class="toolbar">
+      <input id="search" placeholder="Search items" />
+      <span id="item-count" class="item-count" aria-live="polite"></span>
+    </div>
+
+    <div class="controls" aria-label="Sort and filter controls">
+      <label>
+        Sort
+        <select id="sort-by">
+          <option value="created-desc">Newest first</option>
+          <option value="created-asc">Oldest first</option>
+          <option value="name-asc">Name A → Z</option>
+          <option value="name-desc">Name Z → A</option>
+          <option value="category-asc">Category A → Z</option>
+          <option value="category-desc">Category Z → A</option>
+          <option value="location-asc">Location A → Z</option>
+          <option value="location-desc">Location Z → A</option>
+        </select>
+      </label>
+
+      <label class="check-option">
+        <input type="checkbox" id="filter-uncategorized" />
+        Uncategorized only
+      </label>
+
+      <label class="check-option">
+        <input type="checkbox" id="filter-unknown-location" />
+        Unknown location only
+      </label>
+    </div>
+
+    <div class="data-actions">
+      <button id="export-btn" type="button" class="secondary">Export JSON</button>
+      <label class="import-label secondary" for="import-file">Import JSON</label>
+      <input id="import-file" type="file" accept="application/json" hidden />
+    </div>
+
+    <section>
+      <h2>Items</h2>
+      <ul id="item-list"></ul>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
