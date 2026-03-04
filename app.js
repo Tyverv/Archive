@@ -18,6 +18,8 @@ const unknownLocationOnlyInput = document.getElementById("filter-unknown-locatio
 
 const exportButton = document.getElementById("export-btn");
 const importFileInput = document.getElementById("import-file");
+const clearSearchButton = document.getElementById("clear-search");
+const resetControlsButton = document.getElementById("reset-controls");
 
 let items = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
 let editingId = null;
@@ -147,7 +149,14 @@ function render() {
     const category = item.category || "uncategorized";
     const location = item.location || "unknown";
 
-    details.textContent = `${item.name} — ${category} @ ${location}`;
+    const title = document.createElement("strong");
+    title.textContent = item.name;
+
+    const meta = document.createElement("div");
+    meta.className = "item-meta";
+    meta.textContent = `${category} • ${location}`;
+
+    details.append(title, meta);
     actions.className = "item-actions";
 
     editButton.type = "button";
@@ -299,6 +308,21 @@ searchInput.addEventListener("input", render);
 sortBySelect.addEventListener("change", render);
 uncategorizedOnlyInput.addEventListener("change", render);
 unknownLocationOnlyInput.addEventListener("change", render);
+
+clearSearchButton.addEventListener("click", () => {
+  searchInput.value = "";
+  render();
+  searchInput.focus();
+});
+
+resetControlsButton.addEventListener("click", () => {
+  searchInput.value = "";
+  sortBySelect.value = DEFAULT_SORT;
+  uncategorizedOnlyInput.checked = false;
+  unknownLocationOnlyInput.checked = false;
+  render();
+  setFeedback("Filters reset.", "muted");
+});
 
 ensureSchema();
 setFeedback("Ready.", "muted");
