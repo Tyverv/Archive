@@ -10,16 +10,17 @@ The application runs entirely client-side and requires no build step, backend, o
 
 ## Features
 
-- Add items with name, category, and location  
-- Edit or delete existing items  
-- Search across saved items  
-- Sort items by time, name, category, or location  
-- Filter to uncategorized and/or unknown-location items  
-- Export and import items via JSON backup  
-- Persistent storage using browser `localStorage`  
-- Clean, minimal UI  
-- Zero dependencies  
-- Offline-capable  
+- Add items with name, category, and location
+- Edit or delete existing items
+- Search across saved items
+- Sort items by time, name, category, or location
+- Filter to uncategorized and/or unknown-location items
+- Export and import items via JSON backup
+- Persistent storage using browser `localStorage`
+- Clean, minimal UI
+- Refined card-based layout and streamlined controls
+- Zero dependencies
+- Offline-capable
 
 ---
 
@@ -40,7 +41,7 @@ No setup required.
 
 This initial release intentionally keeps functionality minimal:
 
-- Flat data model  
+- Flat data model
 
 These constraints are expected to be addressed in future versions.
 
@@ -50,9 +51,9 @@ These constraints are expected to be addressed in future versions.
 
 **v0.1.0**
 
-- Initial release  
-- Basic item indexing  
-- Local persistence via client storage  
+- Initial release
+- Basic item indexing
+- Local persistence via client storage
 - Minimal interface
 
 **v0.1.1**
@@ -82,6 +83,13 @@ These constraints are expected to be addressed in future versions.
 - Added duplicate-entry warning (non-blocking)
 - Added JSON export/import for local backup and restore
 - Improved input normalization and validation
+
+**v0.3.1-alpha**
+
+- Complete UI/UX refresh with card-based sections and improved visual hierarchy
+- Streamlined add/update flow with clearer labels and contextual hints
+- Added quick actions for clearing search and resetting active filters
+- Preserved all v0.3.0 data and management features
 
 ---
 
