@@ -84,8 +84,6 @@ These constraints are expected to be addressed in future versions.
 - Added JSON export/import for local backup and restore
 - Improved input normalization and validation
 
----
-
 **v0.3.1-alpha**
 
 - Complete UI/UX refresh with card-based sections and improved visual hierarchy
