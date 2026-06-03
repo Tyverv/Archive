@@ -3,25 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Archive</title>
+  <title>Archive — Structured Records</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <main class="app">
     <header class="app-header">
       <div>
-        <p class="eyebrow">v0.3.1-alpha</p>
+        <p class="eyebrow">v0.4.0-beta · Structured Records</p>
         <h1>Archive</h1>
-        <p class="subtitle">A cleaner local catalog for everything you store.</p>
+        <p class="subtitle">A local-first record system for cataloging items, context, and collections.</p>
       </div>
-      <span id="item-count" class="item-count" aria-live="polite"></span>
+      <div class="header-stats" aria-live="polite">
+        <span id="item-count" class="pill"></span>
+        <span id="collection-count" class="pill"></span>
+      </div>
     </header>
 
+    <section class="panel intro-panel" aria-label="Release overview">
+      <div>
+        <p class="section-kicker">Beta transition</p>
+        <h2>Structured records are here</h2>
+        <p>Archive now stores richer item records with descriptions, tags, collection grouping, and updated timestamps while keeping everything private in your browser.</p>
+      </div>
+    </section>
+
     <section class="panel" aria-label="Item editor">
-      <h2>Add or update item</h2>
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Record editor</p>
+          <h2>Add or update item</h2>
+        </div>
+        <button id="cancel-edit" type="button" class="secondary hidden">Cancel edit</button>
+      </div>
+
       <form id="item-form">
         <label for="name">Name</label>
         <input id="name" placeholder="Vintage camera" required minlength="2" maxlength="80" />
+
+        <label for="collection">Collection <span class="hint">optional</span></label>
+        <input id="collection" placeholder="Studio gear" maxlength="60" />
 
         <label for="category">Category <span class="hint">optional</span></label>
         <input id="category" placeholder="Electronics" maxlength="50" />
@@ -29,15 +50,27 @@
         <label for="location">Location <span class="hint">optional</span></label>
         <input id="location" placeholder="Shelf A-3" maxlength="50" />
 
-        <button type="submit">Add</button>
+        <label for="tags">Tags <span class="hint">comma separated</span></label>
+        <input id="tags" placeholder="analog, repair, favorite" maxlength="160" />
+
+        <label for="description">Description <span class="hint">optional</span></label>
+        <textarea id="description" placeholder="Add condition notes, provenance, reminders, serial numbers, or anything else that helps you understand this item later." maxlength="800"></textarea>
+
+        <button type="submit">Add record</button>
       </form>
       <p id="form-feedback" class="feedback" role="status" aria-live="polite"></p>
     </section>
 
     <section class="panel" aria-label="Find and organize items">
-      <h2>Find & organize</h2>
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Discovery</p>
+          <h2>Find & organize</h2>
+        </div>
+      </div>
+
       <div class="toolbar">
-        <input id="search" placeholder="Search name, category, or location" />
+        <input id="search" placeholder="Search names, details, tags, collections, categories, or locations" />
         <button id="clear-search" type="button" class="secondary">Clear</button>
       </div>
 
@@ -45,14 +78,25 @@
         <label>
           Sort
           <select id="sort-by">
+            <option value="updated-desc">Recently updated</option>
+            <option value="updated-asc">Least recently updated</option>
             <option value="created-desc">Newest first</option>
             <option value="created-asc">Oldest first</option>
             <option value="name-asc">Name A → Z</option>
             <option value="name-desc">Name Z → A</option>
+            <option value="collection-asc">Collection A → Z</option>
+            <option value="collection-desc">Collection Z → A</option>
             <option value="category-asc">Category A → Z</option>
             <option value="category-desc">Category Z → A</option>
             <option value="location-asc">Location A → Z</option>
             <option value="location-desc">Location Z → A</option>
+          </select>
+        </label>
+
+        <label>
+          Collection
+          <select id="collection-filter">
+            <option value="">All collections</option>
           </select>
         </label>
 
@@ -66,6 +110,11 @@
           Unknown location only
         </label>
 
+        <label class="check-option">
+          <input type="checkbox" id="filter-untagged" />
+          Untagged only
+        </label>
+
         <button id="reset-controls" type="button" class="secondary">Reset filters</button>
       </div>
 
@@ -77,10 +126,46 @@
     </section>
 
     <section class="panel" aria-label="Saved items">
-      <h2>Items</h2>
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Records</p>
+          <h2>Items</h2>
+        </div>
+      </div>
       <ul id="item-list"></ul>
     </section>
   </main>
+
+  <dialog id="detail-dialog" aria-labelledby="detail-title">
+    <article class="detail-card">
+      <button id="close-detail" type="button" class="icon-button" aria-label="Close item details">×</button>
+      <p id="detail-collection" class="section-kicker"></p>
+      <h2 id="detail-title"></h2>
+      <p id="detail-description" class="detail-description"></p>
+      <dl class="detail-grid">
+        <div>
+          <dt>Category</dt>
+          <dd id="detail-category"></dd>
+        </div>
+        <div>
+          <dt>Location</dt>
+          <dd id="detail-location"></dd>
+        </div>
+        <div>
+          <dt>Created</dt>
+          <dd id="detail-created"></dd>
+        </div>
+        <div>
+          <dt>Updated</dt>
+          <dd id="detail-updated"></dd>
+        </div>
+      </dl>
+      <div>
+        <h3>Tags</h3>
+        <div id="detail-tags" class="tag-list"></div>
+      </div>
+    </article>
+  </dialog>
 
   <script src="app.js"></script>
 </body>
